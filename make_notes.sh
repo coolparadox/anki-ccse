@@ -9,7 +9,7 @@ fail() {
 }
 
 log() {
-    return
+    return 0
     echo "$ME: $*" >&2
 }
 
@@ -84,7 +84,7 @@ echo_column_back_option() {
     local OPTION_TEXT=$2
     local CORRECT_OPTION=$3
     echo -en "\t"
-    test -n "$OPTION_TEXT" || return
+    test -n "$OPTION_TEXT" || return 0
     echo -n '"'
     echo -n '<div class=""'
     if test "$OPTION_LETTER" = "$CORRECT_OPTION" ; then
