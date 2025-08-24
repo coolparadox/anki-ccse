@@ -2,9 +2,10 @@
 set -euo pipefail
 
 TARGET='ccse_notes.txt'
-echo "Generating $TARGET ..."
 ./make_notes.sh >$TARGET
-for SECTION in 1 2 3 4 5 ; do
-    TAG="tarea_${SECTION}"
+for ANSWER_FILE in *.answers ; do
+    TAG=$( basename -s '.answers' "$ANSWER_FILE" )
+    echo "Processing ${TAG}..." >&2
     ./make_notes.sh $TAG >>$TARGET
 done
+echo "Generated: $TARGET" >&2
